@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Płyty Vinylowe</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/common-controls.css">
+</head>
+<body>
+
+<div th:replace="template.html :: logo"></div>
+<div th:replace="template.html :: menu"></div>
+
+<div id="filter-form">
+    <form method="post" action="/filter">
+        <input type="text" placeholder="filtruj" name="filter" th:value="${filter}">
+        <input type="submit" value="Filteruj">
+    </form>
+</div>
+<div id="content">
+    <th:block th:each="vinyl : ${vinyls}">
+
+        <div class="vinyl">
+            <p th:text="${vinyl.title}" class="vinyl-title"></p>
+            <p th:text="${vinyl.author}" class="vinyl-author"></p>
+            <div class="vinyl-info" >
+                <span th:text="'Ilość: ' + ${vinyl.pieces}"></span>
+                <span th:text="'Isbn: ' + ${vinyl.isbn}"></span>
+                <span th:text="'Cena: ' + ${vinyl.price}"></span>
+                <a th:href="@{/addToBasket/{isbn}(isbn=${vinyl.isbn})} " class="buy"></a>
+                <a th:if="${user.role.name() == 'ADMIN' }" th:href="@{/editVinyl/{isbn}(isbn=${vinyl.isbn})} " class="edit"></a>
+            </div>
+        </div>
+
+    </th:block>
+</div>
+</body>
+</html>
