@@ -1,17 +1,27 @@
 package vinylStoreHiber.model;
 
-public class Vinyl {
-    private String title;
-    private String author;
-    private int pieces;
-    private String isbn;
-    private double price;
+import javax.persistence.*;
 
+@Entity(name = "tvinyl")
+public class Vinyl {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(nullable = false)
+    private String title;
+    @Column(nullable = false)
+    private String author;
+    @Column(nullable = false)
+    private int pieces;
+    @Column(nullable = false, unique = true)
+    private String isbn;
+    @Column(nullable = false)
+    private double price;
+    @Enumerated(EnumType.STRING)
     private Category category;
 
-    ;
-
     public Vinyl(String title, String author, int pieces, String isbn, double price, Category category) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.pieces = pieces;
@@ -23,12 +33,12 @@ public class Vinyl {
     public Vinyl() {
     }
 
-    public Category getCategory() {
-        return category;
+    public int getId() {
+        return id;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -71,9 +81,30 @@ public class Vinyl {
         this.price = price;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public enum Category {
         lata90,
         lata00
+    }
+
+    @Override
+    public String toString() {
+        return "Vinyl{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", pieces=" + pieces +
+                ", isbn='" + isbn + '\'' +
+                ", price=" + price +
+                ", category=" + category +
+                '}';
     }
 
     @Override

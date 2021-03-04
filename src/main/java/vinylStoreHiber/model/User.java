@@ -1,17 +1,26 @@
 package vinylStoreHiber.model;
 
+import javax.persistence.*;
+
+@Entity(name = "tuser")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String surname;
+    @Column(nullable = false, unique = true)
     private String login;
+    @Column(nullable = false)
     private String pass;
+    @Enumerated(EnumType.STRING)
     private Role role;
 
-    public User() {
-    }
-
-    public User(String name, String surname, String login, String pass, Role role) {
+    public User(int id, String name, String surname, String login, String pass, Role role) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.login = login;
@@ -19,20 +28,15 @@ public class User {
         this.role = role;
     }
 
-    public String getLogin() {
-        return login;
+    public User() {
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public int getId() {
+        return id;
     }
 
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -51,12 +55,40 @@ public class User {
         this.surname = surname;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     public Role getRole() {
         return role;
     }
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", login='" + login + '\'' +
+                ", pass='" + pass + '\'' +
+                ", role=" + role +
+                '}';
     }
 
     public enum Role {

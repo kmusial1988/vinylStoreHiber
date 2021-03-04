@@ -140,11 +140,7 @@ public class UserController {
             this.sessionObject.setInfo("Login zajęty !!!");
             return "redirect:/register";
         }
-        User user = new User(userRegistrationData.getName(),
-                userRegistrationData.getSurname(),
-                userRegistrationData.getLogin(),
-                userRegistrationData.getPass(),
-                User.Role.USER);
+        User user = new User();
 
         this.userRepository.addUser(user);
         this.sessionObject.setInfo("rejestracja Udana !!");
