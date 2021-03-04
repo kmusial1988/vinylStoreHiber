@@ -20,7 +20,7 @@ public class Vinyl {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    public Vinyl(String title, String author, int pieces, String isbn, double price, Category category) {
+    public Vinyl(int id, String title, String author, int pieces, String isbn, double price, Category category) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -109,7 +109,7 @@ public class Vinyl {
 
     @Override
     public Object clone()  {
-        return new Vinyl(this.title, this.author, this.pieces, this.isbn, this.price, this.category);
+        return new Vinyl(this.id, this.title, this.author, this.pieces, this.isbn, this.price, this.category);
 
 
     }

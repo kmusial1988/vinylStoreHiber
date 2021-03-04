@@ -21,29 +21,33 @@ public class HBUserRepositoryImpl implements IUserRepository {
     @Autowired
     SessionFactory sessionFactory;
 
-
+//TODO null przy rejstrCJI
     @Override
     public User authentication(User user) {
         return this.userService.authentication(user);
     }
 
-    @Override
-    public User updateUserData(User user) {
-        return null;
-    }
-
-    @Override
-    public User updateUserPass(User user) {
-        return null;
-    }
 
     @Override
     public boolean checkIfLoginExist(String login) {
-        return false;
+        return this.userService.checkIfLoginExist(login);
     }
 
     @Override
     public void addUser(User user) {
+        this.userService.addUser(user);
 
     }
+
+    @Override
+    public User updateUserData(User user) {
+       return this.userService.updateUserDB(user);
+
+    }
+
+    @Override
+    public User updateUserPass(User user) {
+        return this.userService.updateUserPass(user);
+    }
+
 }

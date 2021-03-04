@@ -11,10 +11,10 @@ public class ListUserRepositoryImpl implements IUserRepository {
 
     private final List<User> userList = new ArrayList<>();
 
-    public ListUserRepositoryImpl() {
+    /*public ListUserRepositoryImpl() {
         this.userList.add(new User(1,"kamil","kamil","admin", "admin",User.Role.ADMIN));
         this.userList.add(new User(2,"Jan","Kowalski","jan", "jan",User.Role.USER));
-    }
+    }*/
 
     @Override
     public User authentication(User user) {

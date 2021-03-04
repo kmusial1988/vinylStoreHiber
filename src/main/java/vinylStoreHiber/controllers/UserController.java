@@ -85,7 +85,7 @@ public class UserController {
         user.setLogin(this.sessionObject.getUser().getLogin());
         User updateUser = this.userRepository.updateUserData(user);
         this.sessionObject.setUser(updateUser);
-
+        this.sessionObject.setInfo("zmienino dane !!!!");
         return "redirect:/edit";
     }
 
@@ -112,6 +112,7 @@ public class UserController {
         user.setPass(changePassData.getNewPass());
         User updateUser = this.userRepository.updateUserPass(user);
         this.sessionObject.setUser(updateUser);
+        this.sessionObject.setInfo("zmieniono Hasło !!!!");
 
 
         return "redirect:/edit";
@@ -127,7 +128,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String procesRegister(@ModelAttribute UserRegistrationData userRegistrationData) {
+    public String processRegister(@ModelAttribute UserRegistrationData userRegistrationData) {
 
         if (!userRegistrationData.getPass().equals(userRegistrationData.getRepeatedPass())) {
             this.sessionObject.setInfo("Nieprawidłowo powtórzone hasła !!!");

@@ -52,7 +52,7 @@ public class AdminController {
             if (vinyl.getTitle().equals("") || vinyl.getAuthor().equals("") || vinyl.getIsbn().equals("") || vinyl.getPrice() == 0.0) {
                 this.sessionObject.setInfo("Uzupełnij formularz!!!");
             } else {
-                this.vinylRepository.addnyl(vinyl);
+                this.vinylRepository.addVinyl(vinyl);
                 this.sessionObject.setInfo("Dodano nową płyte !!!");
             }
         }
@@ -66,7 +66,7 @@ public class AdminController {
 
         Vinyl vinyl = this.vinylRepository.getVinylByISBN(isbn);
         model.addAttribute("vinyl", vinyl);
-        model.addAttribute(this.sessionObject.getUser());
+        model.addAttribute("user", this.sessionObject.getUser());
 
         return "editVinyl";
     }
