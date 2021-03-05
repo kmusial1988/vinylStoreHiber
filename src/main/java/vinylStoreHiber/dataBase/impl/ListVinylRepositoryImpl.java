@@ -69,5 +69,11 @@ public class ListVinylRepositoryImpl implements IVinylRepository {
         this.vinyl.add(vinyl);
     }
 
+    @Override
+    public void updateVinyl(Vinyl vinyl) {
+        //TODO nic nie robić
+
+    }
+
 
 }

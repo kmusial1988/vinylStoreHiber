@@ -11,4 +11,5 @@ public interface IVinylRepository {
     Vinyl getVinylByISBN (String isbn);
     void addVinyl(Vinyl vinyl);
 
+    void updateVinyl(Vinyl vinyl);
 }

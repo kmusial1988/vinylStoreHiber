@@ -10,6 +10,7 @@ import vinylStoreHiber.dataBase.IUserRepository;
 import vinylStoreHiber.model.User;
 import vinylStoreHiber.model.view.ChangePassData;
 import vinylStoreHiber.model.view.UserRegistrationData;
+import vinylStoreHiber.services.IUserService;
 import vinylStoreHiber.session.SessionObject;
 
 import javax.annotation.Resource;
@@ -25,6 +26,9 @@ public class UserController {
 
     @Resource
     SessionObject sessionObject;
+
+    @Autowired
+    IUserService userService;
 
 
 
@@ -128,21 +132,21 @@ public class UserController {
 
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String processRegister(@ModelAttribute UserRegistrationData userRegistrationData) {
+    public String processRegister(@ModelAttribute UserRegistrationData userRegistrationData, User user) {
 
         if (!userRegistrationData.getPass().equals(userRegistrationData.getRepeatedPass())) {
             this.sessionObject.setInfo("Nieprawidłowo powtórzone hasła !!!");
             return "redirect:/register";
         }
 
-        boolean checkResult = this.userRepository.checkIfLoginExist(userRegistrationData.getLogin());
+        User loginFromDB = this.userService.getUserByLogin(user.getLogin());
 
-        if (checkResult) {
+        if (userRegistrationData.equals(loginFromDB)) {
             this.sessionObject.setInfo("Login zajęty !!!");
             return "redirect:/register";
         }
-        User user = new User();
 
+        user.setRole(User.Role.USER);
         this.userRepository.addUser(user);
         this.sessionObject.setInfo("rejestracja Udana !!");
 

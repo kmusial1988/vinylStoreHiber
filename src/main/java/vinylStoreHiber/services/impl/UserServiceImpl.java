@@ -47,7 +47,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User updateUserDB(User user) {
+    public User updateUserData(User user) {
         User userFromDB = userDAO.getUserByLogin(user.getLogin());
         if (userFromDB.getLogin().equals(user.getLogin())) {
             userFromDB.setName(user.getName());
@@ -67,6 +67,10 @@ public class UserServiceImpl implements IUserService {
             return userFromDB;
         }
         return null;
+    }
+    @Override
+    public User getUserByLogin(String login){
+        return this.userDAO.getUserByLogin(login);
     }
 
 }

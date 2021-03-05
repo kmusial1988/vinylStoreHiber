@@ -10,7 +10,9 @@ public interface IUserService {
 
     void addUser(User user);
 
-    User updateUserDB(User user);
+    User updateUserData(User user);
 
     User updateUserPass(User user);
+
+    User getUserByLogin(String login);
 }

@@ -14,4 +14,6 @@ public interface IVinylService {
     Vinyl getVinylByISBN(String isbn);
 
     void addVinyl(Vinyl vinyl);
+
+    void updateVinyl(Vinyl vinyl);
 }

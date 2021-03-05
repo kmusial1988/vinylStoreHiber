@@ -21,7 +21,6 @@ public class HBUserRepositoryImpl implements IUserRepository {
     @Autowired
     SessionFactory sessionFactory;
 
-//TODO null przy rejstrCJI
     @Override
     public User authentication(User user) {
         return this.userService.authentication(user);
@@ -41,7 +40,7 @@ public class HBUserRepositoryImpl implements IUserRepository {
 
     @Override
     public User updateUserData(User user) {
-       return this.userService.updateUserDB(user);
+       return this.userService.updateUserData(user);
 
     }
 

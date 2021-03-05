@@ -73,9 +73,13 @@ public class AdminController {
     @RequestMapping(value = "/editVinyl/{isbn}", method = RequestMethod.POST)
     public  String editVinyl(@ModelAttribute Vinyl vinyl, @PathVariable String isbn) {
 
+
         Vinyl vinylFromDB = this.vinylRepository.getVinylByISBN(isbn);
         vinylFromDB.setPieces(vinyl.getPieces());
         vinylFromDB.setPrice(vinyl.getPrice());
+        vinylFromDB.setCategory(vinyl.getCategory());
+
+        this.vinylRepository.updateVinyl(vinylFromDB);
 
         return "redirect:/main";
 

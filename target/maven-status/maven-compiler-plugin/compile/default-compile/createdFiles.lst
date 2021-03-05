@@ -1,7 +1,6 @@
 vinylStoreHiber/dataBase/IUserRepository.class
 vinylStoreHiber/controllers/BasketController.class
 vinylStoreHiber/controllers/CommonController.class
-vinylStoreHiber/dataBase/impl/UserRepositoryImpl.class
 vinylStoreHiber/utils/filterUtils.class
 vinylStoreHiber/services/IUserService.class
 vinylStoreHiber/session/SessionObject.class

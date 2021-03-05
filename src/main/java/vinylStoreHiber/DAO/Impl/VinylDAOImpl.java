@@ -80,4 +80,22 @@ public class VinylDAOImpl implements IVinylDAO {
 
     }
 
+    @Override
+    public void updateVinyl(Vinyl vinyl) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.saveOrUpdate(vinyl);
+            tx.commit();
+        } catch (Exception e) {
+            if(tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+
+    }
+
 }

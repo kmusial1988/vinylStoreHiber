@@ -40,4 +40,9 @@ public class HBVinylRepositoryImpl implements IVinylRepository {
     public void addVinyl(Vinyl vinyl) {
         this.vinylService.addVinyl(vinyl);
     }
+    @Override
+    public void updateVinyl(Vinyl vinyl) {
+        this.vinylService.updateVinyl(vinyl);
+
+    }
 }

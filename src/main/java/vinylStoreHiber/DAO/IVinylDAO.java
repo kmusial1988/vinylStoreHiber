@@ -12,4 +12,5 @@ public interface IVinylDAO {
     Vinyl getVinylByISBN(String isbn);
 
     void addVinyl(Vinyl vinyl);
+    void updateVinyl(Vinyl vinyl);
 }

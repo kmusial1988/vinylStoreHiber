@@ -36,4 +36,10 @@ public class VinylServiceImpl implements IVinylService {
     public void addVinyl(Vinyl vinyl) {
         this.vinylDAO.addVinyl(vinyl);
     }
+
+    @Override
+    public void updateVinyl(Vinyl vinyl) {
+        this.vinylDAO.updateVinyl(vinyl);
+
+    }
 }
